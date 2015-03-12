@@ -1,0 +1,66 @@
+{
+  "name"        : "js-girder-client",
+  "description" : "JavaScript Girder client that can run in a browser and in nodeJS with a CLI interface.",
+  "version"     : "0.0.1",
+  "main"        : "./src/girder.js",
+  "repository": {
+    "type"  : "git",
+    "url"   : "https://github.com/Kitware/js-girder-client.git"
+  },
+  "dependencies": {
+    "reqwest"     : "latest",
+    "synchronize" : "latest",
+    "form-data"   : "latest"
+  },
+  "devDependencies": {
+    "autoprefixer-loader"     : "latest",
+    "css-loader"              : "latest",
+    "expose-loader"           : "latest",
+    "file-loader"             : "latest",
+    "html-loader"             : "latest",
+    "jshint-loader"           : "latest",
+    "strict-loader"           : "latest",
+    "style-loader"            : "latest",
+    "stylus-loader"           : "latest",
+    "url-loader"              : "latest",
+    "webpack"                 : "latest",
+
+    "jasmine-core"            : "latest",
+  
+    "jest-cli"                : "latest",
+    
+    "karma-cli"               : "latest",
+    "karma-jasmine"           : "latest",
+    "karma-phantomjs-launcher": "latest",
+    "karma-chrome-launcher"   : "latest",
+    "karma-firefox-launcher"  : "latest",
+    "karma-safari-launcher"   : "latest"
+  },
+  "scripts": {
+    "postinstall"   : "npm run build:release && npm test",
+    
+    "test:node"     : "jest",
+    "test:baw"      : "karma start ./tests/karma.conf.js",
+    "test:bpw"      : "karma start ./tests/karma.conf.js --browsers PhantomJS",
+    "test:bp"       : "karma start ./tests/karma.conf.js --browsers PhantomJS --single-run",
+    "test:browser"  : "karma start ./tests/karma.conf.js --single-run",
+    "test"          : "npm run test:node && npm run test:bp",
+
+    "help"          : "girder-client --help",
+    
+    "build"         : "webpack",
+    "build:debug"   : "webpack --display-modules",
+    "build:release" : "webpack -p"
+  },
+  "bin": {
+    "girder-client" : "./bin/girder-cli.js"
+  },
+  "jest": {
+    "testFileExtensions"         : [ "js" ],
+    "modulePathIgnorePatterns"   : [ "/node_modules/", "-karma-only.js" ],
+    "testPathDirs"               : [ "src" ],
+    "unmockedModulePathPatterns" : [ "./node_modules/*", "./tests/*" ],
+    "testDirectoryName"          : "tests",
+    "collectCoverage"            : false
+  }
+}

@@ -1,0 +1,19 @@
+language: node_js
+
+node_js:
+    - "0.12"
+
+services:
+    - mongodb
+
+before_script:
+  - girder-server
+  - sleep 15
+
+install:
+    - sudo pip install girder
+    - npm install
+    - girder-client --init-girder-for-test
+
+script:
+    - npm test
