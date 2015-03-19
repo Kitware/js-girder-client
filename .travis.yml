@@ -1,19 +1,22 @@
 language: node_js
-
 node_js:
-    - "0.12"
-
+- '0.12'
 services:
-    - mongodb
-
+- mongodb
 before_script:
-  - girder-server
-  - sleep 15
-
+- girder-server
+- sleep 15
 install:
-    - sudo pip install girder
-    - npm install
-    - girder-client --init-girder-for-test
-
+- sudo pip install girder
+- npm install
+- girder-client --init-girder-for-test
 script:
-    - npm test
+- npm test
+deploy:
+  provider: npm
+  email: sebastien.jourdain@kitware.com
+  api_key:
+    secure: VaZ457hWuLHMTjdYhpqoh/+GjosHSHya4DHSSPBgOLT5PS+YaZ+2tQ7u9NDn075kz5X18YOYrp3oUneW+GhlmCc45sn73jDhLpLNebhGuLKgV7rBo8wWMlHTtWLvTc0q9I43o8a7gR6VrH51RohkuM7kImBr2RzWPyfdthl5Nbg=
+  on:
+    tags: true
+    repo: Kitware/js-girder-client
