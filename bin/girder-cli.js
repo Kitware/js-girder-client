@@ -47,9 +47,35 @@ var fs = require('fs'),
             return i + 1;
         }, 
         '--script': function(i) {
-            script = require(process.argv[i+1]);
+            var possiblePaths = [
+                    process.argv[i+1],
+                    __dirname + '/../scripts/js/' + process.argv[i+1],
+                    __dirname + '/../scripts/js/' + process.argv[i+1] + '.js'
+                ]
+                , count = possiblePaths.length;
+
+            while(count--) {
+                if(fs.existsSync(possiblePaths[count])) {
+                   script = require(possiblePaths[count]);
+                   count = 0;
+                }
+            }
+
+            if(script === null) {
+                console.error("Could not find script with following paths:");
+                count = possiblePaths.length;
+                while(count--) {
+                   console.error(' - ' + possiblePaths[count]);
+                }
+            }
+
             return i + 1;
         }, 
+        '--init-girder-for-test': function(i) {
+            console.log(__dirname + '/../scripts/js/init-empty-girder-for-tests.js');
+            script = require(__dirname + '/../scripts/js/init-empty-girder-for-tests.js')
+            return i;
+        },
         '--help': function(i) {
             if(!script) {
                 console.log('\nUsage: girder-client [options]');
