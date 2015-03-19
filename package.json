@@ -37,7 +37,7 @@
     "karma-safari-launcher"   : "latest"
   },
   "scripts": {
-    "postinstall"   : "npm run build:release && npm test",
+    "dev"           : "npm run build:release && npm test",
     
     "test:node"     : "jest",
     "test:baw"      : "karma start ./tests/karma.conf.js",
