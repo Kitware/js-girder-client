@@ -9,7 +9,7 @@ before_script:
 install:
 - sudo pip install girder
 - npm install
-- girder-client --init-girder-for-test
+- ./node_modules/.bin/girder-client --init-girder-for-test
 script:
 - npm test
 deploy:
