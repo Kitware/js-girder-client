@@ -1,3 +1,4 @@
+// Gather all girder modules so they get exposed via a single entry point.
 var _ = require("./girder-util.js"),
     girderResources = [
         require('./girder-assetstore.js'),
@@ -11,16 +12,24 @@ var _ = require("./girder-util.js"),
         require('./girder-user.js')
     ];
 
-//-- Main exposed function used to configure the service
-
+// Namespace function used to configure the service such as
+// host, port, protocol, API endpoint and eventually provide an existing token.
+//
+// Default values for available options:
+//
+//      {
+//          port: 8080,
+//          host: "localhost",
+//          protocol: "http:",
+//          basepath: "/api/v1",
+//          token: "sdhfgojhskfhaksjhdf;kjasrfgu"
+//      }
 function configure(opts) {
     _.update(opts);
 }
 
-//-- REST method for User authentication
-
+// Method used to authenticate yourself as a given user.
 function login(user, password, callback) {
-    // Use basic authentication
     _.update({ user: user, password: password });
     _.GET('/user/authentication', function(err, response) {
         if(err) {
@@ -32,8 +41,7 @@ function login(user, password, callback) {
     });
 }
 
-//-- REST method for User authentication
-
+// Clear current authentication
 function logout(callback) {
     _.DELETE('/user/authentication', function(err, response) {
         if(err) {
@@ -44,21 +52,22 @@ function logout(callback) {
     });
 }
 
-// --- Export functions for the module ---
-
-module.exports = configure;
-
-//--
-
+// Expose methods to the module
+module.exports        = configure;
 module.exports.login  = login;
 module.exports.logout = logout;
 
-//-- Expose all girder resources
-var count = girderResources.length;
+// Register every methods from the girder modules to the girder namespace.
 
+var count = girderResources.length;
 while(count--) {
     var girderModule = girderResources[count];
     for(var key in girderModule) {
         module.exports[key] = girderModule[key];
     }
 }
+
+// This will allow to have other module methods exposed as follow:
+//
+//     $ girder.methodName(args, ..., callback);
+//

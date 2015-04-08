@@ -1,0 +1,20 @@
+{
+    "output"    : "doc/www",
+    "src"       : "src",
+    "api"       : "doc/api",
+    "doc"       : "doc/guides",
+    "news"      : "doc/news",
+    "theme"     : "tonic",
+    "icon"      : "doc/images/girder-client2.png",
+    "ctx"   : {
+        "title": "JS Girder Client",
+        "email": "info@kitware.com",
+        "description": "HTTP library for Girder.",
+        "baseurl" : "",
+        "url" : "",
+        "twitter_username": "kitware",
+        "github_username": "kitware",
+        "repository": "https://github.com/Kitware/js-girder-client",
+        "timezone": "America/Denver"
+    }
+}

@@ -1,3 +1,4 @@
+// Get reference to the internal HTTP request abstraction
 var _ = require("./girder-util.js");
 
 // ----------------------------------------------------------------------------

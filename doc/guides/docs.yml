@@ -1,0 +1,9 @@
+- title: Getting Started
+  docs:
+  - home
+
+- title: User guide
+  docs:
+  - cli-usage
+  - cli-script-usage
+  - web-usage

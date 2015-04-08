@@ -1,3 +1,6 @@
+// Internal module used to abstract HTTP request between a node and browser
+// implementation.
+
 var basepath = "/api/v1",
     host     = "localhost",
     port     = 8080,
@@ -5,12 +8,11 @@ var basepath = "/api/v1",
     userAuth = null,
     protocol = "http:";
 
-// ----------------------------------------------------------------------------
-
 function NoOp(){}
 
-// ----------------------------------------------------------------------------
 
+// Helper to extract optional arguments and callback
+// This assume the callback parameter being the last one.
 function argsProcessor(keys, args) {
     var argMap = {},
         argsArray = [];
@@ -30,8 +32,7 @@ function argsProcessor(keys, args) {
     return argMap;
 }
 
-// ----------------------------------------------------------------------------
-
+// Update module configuration
 function update(config) {
     basepath = config.basepath  || basepath;
     host     = config.host      || host;
@@ -42,15 +43,13 @@ function update(config) {
     updateUser(config.user, config.password);
 }
 
-// ----------------------------------------------------------------------------
-
+// Reset authentication
 function resetAuth() {
     token    = null;
     userAuth = null;
 }
 
-// ----------------------------------------------------------------------------
-
+// Update user authentication information
 function updateUser(user, password) {
     if(user && password) {
         if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
@@ -61,8 +60,7 @@ function updateUser(user, password) {
     }
 }
 
-// ----------------------------------------------------------------------------
-
+// Generate URI parameter based on a Map and an array of string of include and exclude.
 function extractQuery(queryMap, filterKeys, excludeKeys) {
     var queryBuffer = [];
 
@@ -85,8 +83,7 @@ function extractQuery(queryMap, filterKeys, excludeKeys) {
     return '';
 }
 
-// ----------------------------------------------------------------------------
-
+// Build the request description for Girder
 function makeRequest(method, url, formData) {
     var requestObject = {  
         method      : method,      
@@ -120,8 +117,7 @@ function makeRequest(method, url, formData) {
     return requestObject;
 }
 
-// ----------------------------------------------------------------------------
-
+// Helper for node implementation
 function handleResponse(callback) {
     if(!callback) {
         return NoOp;
@@ -141,8 +137,7 @@ function handleResponse(callback) {
     };
 }
 
-// ----------------------------------------------------------------------------
-
+// Helper for browser implementation
 function attachSuccessError(requestObj, callback) {
     if(callback) {
         requestObj.success = function(response,a,b,c,d) {
@@ -155,8 +150,7 @@ function attachSuccessError(requestObj, callback) {
     return requestObj;
 }
 
-// ----------------------------------------------------------------------------
-
+// Helper for node implementation
 function handleRequest(request, formData, callback) {
     var args = argsProcessor(['request', 'formData', 'callback'], arguments);
 
@@ -177,8 +171,7 @@ function handleRequest(request, formData, callback) {
     request.end();
 }
 
-// --- Export functions for the module ----------------------------------------
-
+// Expose module API
 module.exports = {
     update      : update,
     resetAuth   : resetAuth,
@@ -186,10 +179,7 @@ module.exports = {
     args        : argsProcessor
 };
 
-// ----------------------------------------------------------------------------
-// Custom request management between server and client implementation
-// ----------------------------------------------------------------------------
-
+// Browser specific code
 if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
     var httpClient = require('reqwest');
     module.exports.GET = function (url, callback) {
@@ -208,6 +198,7 @@ if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
         httpClient(attachSuccessError(makeRequest('post', url), callback));
     };
 } else {
+    // Node specific code
     var http = require('http');
     module.exports.GET = function (url, callback) {
         handleRequest( http.request(makeRequest('GET', url), handleResponse(callback)), callback);
@@ -224,10 +215,6 @@ if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
     module.exports.POST = function (url, formData, callback) {
         var args = argsProcessor(['url', 'formData', 'callback'], arguments);
 
-        // if(args.formData) {
-        //     args.formData.submit(makeRequest('POST', url), callback);
-        // } else {
-            handleRequest( http.request(makeRequest('POST', url, args.formData), handleResponse(args.callback)), args.formData, args.callback);
-        // }
+    handleRequest( http.request(makeRequest('POST', url, args.formData), handleResponse(args.callback)), args.formData, args.callback);
     };
 }
