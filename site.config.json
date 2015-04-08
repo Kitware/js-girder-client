@@ -6,6 +6,7 @@
     "news"      : "doc/news",
     "theme"     : "tonic",
     "icon"      : "doc/images/girder-client2.png",
+    "gitdir"    : "../../.git/modules/doc/www",
     "ctx"   : {
         "title": "JS Girder Client",
         "email": "info@kitware.com",
