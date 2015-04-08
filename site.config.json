@@ -10,7 +10,7 @@
         "title": "JS Girder Client",
         "email": "info@kitware.com",
         "description": "HTTP library for Girder.",
-        "baseurl" : "",
+        "baseurl" : "/js-girder-client",
         "url" : "",
         "twitter_username": "kitware",
         "github_username": "kitware",

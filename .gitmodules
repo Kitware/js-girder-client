@@ -1,0 +1,4 @@
+[submodule "doc/www"]
+	path = doc/www
+	url = https://github.com/Kitware/js-girder-client.git
+	branch = gh-pages
