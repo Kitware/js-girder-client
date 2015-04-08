@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>JS Girder Client</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+<header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+        <img src="/img/logo.png" height="40" alt="Logo">
+        JS Girder Client
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/docs/home">Docs</a>
+        <a class="page-link" href="/news">News</a>
+        <a class="page-link" href="/dev">Dev</a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>girder-folder.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="girder-assetstore.html">
+                    girder-assetstore.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-collection.html">
+                    girder-collection.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-file.html">
+                    girder-file.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-folder.html">
+                    girder-folder.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-group.html">
+                    girder-group.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-item.html">
+                    girder-item.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-resource.html">
+                    girder-resource.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-system.html">
+                    girder-system.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-user.html">
+                    girder-user.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-util.html">
+                    girder-util.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder.html">
+                    girder.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-login.html">
+                    girder-login.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="testRunEnv-karma-only.html">
+                    testRunEnv-karma-only.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <p>Get reference to the internal HTTP request abstraction</p>
+
+        
+          <div class='highlight'><pre><span class="hljs-keyword">var</span> _ = <span class="hljs-built_in">require</span>(<span class="hljs-string">"./girder-util.js"</span>);</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listFolders</span><span class="hljs-params">(query, callback)</span> </span>{
+    <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'parentType'</span>, <span class="hljs-string">'parentId'</span>, <span class="hljs-string">'text'</span>, <span class="hljs-string">'limit'</span>, <span class="hljs-string">'offset'</span>, <span class="hljs-string">'sort'</span>, <span class="hljs-string">'sortdir'</span>],
+        args = _.args([<span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
+    _.GET(<span class="hljs-string">'/folder'</span> + _.extractQuery(args.query, allowedQueryKeys), args.callback);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createFolder</span><span class="hljs-params">(parentType, parentId, name, options, callback)</span> </span>{
+    <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'parentType'</span>, <span class="hljs-string">'parentId'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'description'</span>, <span class="hljs-string">'public'</span>],
+        args = _.args([<span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
+
+    options = options || {};
+    options.parentType = args.parentType;
+    options.parentId   = args.parentId;
+    options.name       = args.name;
+
+    _.POST(<span class="hljs-string">'/folder'</span> + _.extractQuery(args.options, allowedQueryKeys), args.callback);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editFolderMetaData</span><span class="hljs-params">(folderId, metadata, callback)</span> </span>{</pre></div>
+        
+      
+        
+        <p>FIXME provide body as JSON for metadata
+_.PUT(‘/folder/‘ + folderId + ‘/metadata’, callback);</p>
+
+        
+          <div class='highlight'><pre>    callback(<span class="hljs-string">"Not implemented yet"</span>);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteFolder</span><span class="hljs-params">(folderId, callback)</span> </span>{
+    _.DELETE(<span class="hljs-string">'/folder/'</span> + folderId, callback);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFolder</span><span class="hljs-params">(folderId, callback)</span> </span>{
+    _.GET(<span class="hljs-string">'/folder/'</span> + folderId, callback);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editFolder</span><span class="hljs-params">(folderId, options, callback)</span> </span>{
+    <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'parentType'</span>, <span class="hljs-string">'parentId'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'description'</span>],
+        args = _.args([<span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
+    _.PUT(<span class="hljs-string">'/folder/'</span> + args.folderId + _.extractQuery(args.options, allowedQueryKeys), args.callback);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadFolder</span><span class="hljs-params">(folderId, callback)</span> </span>{
+    _.PUT(<span class="hljs-string">'/folder/'</span> + folderId + <span class="hljs-string">'/download'</span>, callback);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFolderAccess</span><span class="hljs-params">(folderId, callback)</span> </span>{
+    _.GET(<span class="hljs-string">'/folder/'</span> + folderId + <span class="hljs-string">'/access'</span>, callback);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editFolderAccess</span><span class="hljs-params">(folderId, access, publicFlag, callback)</span> </span>{
+    <span class="hljs-keyword">var</span> args = _.args([<span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>),
+        query = {
+            access : access
+        };
+
+    <span class="hljs-keyword">if</span>(args.publicFlag !== <span class="hljs-literal">undefined</span>) {
+        query.public = publicFlag;
+    }
+    _.PUT(<span class="hljs-string">'/folder/'</span> + folderId + <span class="hljs-string">'/access'</span> + _.extractQuery(query), args.callback);
+}</pre></div>
+        
+      
+        
+        <p>—- Export functions for the module —-</p>
+
+        
+          <div class='highlight'><pre>
+<span class="hljs-built_in">module</span>.exports = {
+    listFolders         : listFolders,
+    createFolder        : createFolder,
+    editFolderMetaData  : editFolderMetaData,
+    deleteFolder        : deleteFolder,
+    getFolder           : getFolder,
+    editFolder          : editFolder,
+    downloadFolder      : downloadFolder,
+    getFolderAccess     : getFolderAccess,
+    editFolderAccess    : editFolderAccess
+};</pre></div>
+        
+      
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>JS Girder Client</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+<header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+        <img src="/img/logo.png" height="40" alt="Logo">
+        JS Girder Client
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        <a class="page-link" href="/">Home</a>
+        <a class="page-link" href="/docs/home">Docs</a>
+        <a class="page-link" href="/news">News</a>
+        <a class="page-link" href="/dev">Dev</a>
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>girder-login.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="girder-assetstore.html">
+                    girder-assetstore.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-collection.html">
+                    girder-collection.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-file.html">
+                    girder-file.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-folder.html">
+                    girder-folder.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-group.html">
+                    girder-group.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-item.html">
+                    girder-item.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-resource.html">
+                    girder-resource.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-system.html">
+                    girder-system.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-user.html">
+                    girder-user.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-util.html">
+                    girder-util.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder.html">
+                    girder.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="girder-login.html">
+                    girder-login.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="testRunEnv-karma-only.html">
+                    testRunEnv-karma-only.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre><span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> jest !== <span class="hljs-string">'undefined'</span>) {
+    jest.autoMockOff();
+
+    <span class="hljs-keyword">var</span> girder = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../girder'</span>),
+        girderConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../tests/girder-config'</span>),
+        testHelper = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../../tests/test-helper'</span>);
+}
+
+describe(<span class="hljs-string">"Girder login"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+    it(<span class="hljs-string">'test login/me/logout/me'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{ 
+        <span class="hljs-keyword">var</span> me = <span class="hljs-literal">null</span>;</pre></div>
+        
+      
+        
+        <p>Configure server</p>
+
+        
+          <div class='highlight'><pre>        girder({port:girderConfig.port});
+        girder.login(girderConfig.login, girderConfig.password, testHelper);</pre></div>
+        
+      
+        
+        <p>Look at Login() response</p>
+
+        
+          <div class='highlight'><pre>        testHelper.waitAndRun(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> </span>{</pre></div>
+        
+      
+        
+        <p>No error</p>
+
+        
+          <div class='highlight'><pre>            expect(data.error).toBeNull();</pre></div>
+        
+      
+        
+        <p>Got user            </p>
+
+        
+          <div class='highlight'><pre>            expect( data.response
+                    &amp;&amp; data.response.content 
+                    &amp;&amp; data.response.content.user).toBeTruthy();</pre></div>
+        
+      
+        
+        <p>Store the user</p>
+
+        
+          <div class='highlight'><pre>            me = data.response.content.user;</pre></div>
+        
+      
+        
+        <p>Got authToken</p>
+
+        
+          <div class='highlight'><pre>            expect( data.response
+                    &amp;&amp; data.response.content 
+                    &amp;&amp; data.response.content.authToken
+                    &amp;&amp; data.response.content.authToken.token).toBeTruthy();</pre></div>
+        
+      
+        
+        <p>Valid token form</p>
+
+        
+          <div class='highlight'><pre>            expect(data.response.content.authToken.token.length).toBe(<span class="hljs-number">64</span>);</pre></div>
+        
+      
+        
+        <p>Make a new request
+=&gt; Get current logged in user</p>
+
+        
+          <div class='highlight'><pre>            girder.me(testHelper);
+        });</pre></div>
+        
+      
+        
+        <p>Look at Me() response</p>
+
+        
+          <div class='highlight'><pre>        testHelper.waitAndRun(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> </span>{</pre></div>
+        
+      
+        
+        <p>No error</p>
+
+        
+          <div class='highlight'><pre>            expect(data.error).toBeNull();</pre></div>
+        
+      
+        
+        <p>Got user            </p>
+
+        
+          <div class='highlight'><pre>            expect( data.response
+                    &amp;&amp; data.response.content).toBeTruthy();</pre></div>
+        
+      
+        
+        <p>Same user as the login one</p>
+
+        
+          <div class='highlight'><pre>            expect(data.response.content).toEqual(me);</pre></div>
+        
+      
+        
+        <p>Make a new request
+=&gt; Logout</p>
+
+        
+          <div class='highlight'><pre>            girder.logout(testHelper);
+        });</pre></div>
+        
+      
+        
+        <p>Look at Logout() response</p>
+
+        
+          <div class='highlight'><pre>        testHelper.waitAndRun(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> </span>{</pre></div>
+        
+      
+        
+        <p>No error</p>
+
+        
+          <div class='highlight'><pre>            expect(data.error).toBeNull();</pre></div>
+        
+      
+        
+        <p>Got response            </p>
+
+        
+          <div class='highlight'><pre>            expect( data.response
+                    &amp;&amp; data.response.content).toBeTruthy();</pre></div>
+        
+      
+        
+        <p>Make a new request
+=&gt; Me() while not being logged in</p>
+
+        
+          <div class='highlight'><pre>            girder.me(testHelper);
+        });</pre></div>
+        
+      
+        
+        <p>Look at Me() response (When not logged in)</p>
+
+        
+          <div class='highlight'><pre>        testHelper.waitAndRun(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span> </span>{</pre></div>
+        
+      
+        
+        <p>No error</p>
+
+        
+          <div class='highlight'><pre>            expect(data.error).toBeNull();</pre></div>
+        
+      
+        
+        <p>No me        </p>
+
+        
+          <div class='highlight'><pre>            expect(data.response.content).toBeNull();
+
+            testHelper.done(done);
+        });
+    });
+});</pre></div>
+        
+      
+    </div>
+  </div>
+</body>
+</html>
