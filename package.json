@@ -48,7 +48,7 @@
     "build:debug": "webpack --display-modules",
     "build:release": "webpack -p",
     "www": "tonic-site-generator site.config.json",
-    "www:http" : "npm run www && serve doc/www"
+    "www:http" : "tonic-site-generator site.config.json --local-test && serve docs/www"
   },
   "bin": {
     "girder-client": "./bin/girder-cli.js"

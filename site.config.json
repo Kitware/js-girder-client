@@ -1,21 +1,24 @@
 {
-    "output"    : "doc/www",
+    "output"    : "docs/www",
     "src"       : "src",
-    "api"       : "doc/api",
-    "doc"       : "doc/guides",
-    "news"      : "doc/news",
+    "api"       : "docs/api",
+    "doc"       : "docs/guides",
+    "news"      : "docs/news",
     "theme"     : "tonic",
-    "icon"      : "doc/images/girder-client2.png",
-    "gitdir"    : "../../.git/modules/doc/www",
+    "icon"      : "docs/images/girder-client2.png",
+    "gitdir"    : "../../.git/modules/docs/www",
     "ctx"   : {
         "title": "JS Girder Client",
-        "email": "info@kitware.com",
+        "vision": "Automagic Girder Communication",
         "description": "HTTP library for Girder.",
+        "details": "",
+        "license": "BSD 3 Clause Open Source",
+        "company": "Kitware, Inc.",
+        "companyURL": "http://www.kitware.com",
         "baseurl" : "/js-girder-client",
         "url" : "",
-        "twitter_username": "kitware",
-        "github_username": "kitware",
-        "repository": "https://github.com/Kitware/js-girder-client",
-        "timezone": "America/Denver"
+        "repository": "Kitware/js-girder-client",
+        "timezone": "America/Denver",
+        "project": "js-girder-client"
     }
 }
