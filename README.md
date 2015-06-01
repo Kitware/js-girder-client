@@ -1,17 +1,17 @@
 ## js-girder-client: JavaScript client for a **Girder** server.
 
-### https://github.com/Kitware/js-girder-client
+### http://kitware.github.io/js-girder-client/
 
 **js-girder-client** is a JavaScript library for interacting with a girder
-server instance. That library can be used inside NodeJS or within a browser.
-A command line interface is also provided which allow complex actions to be
-scripted.
+server instance. The library can be used inside NodeJS or within a browser.
+In addition, a command line interface is also provided that allows complex
+actions to be scripted.
 
 More information on **Girder** can be found [here](https://github.com/girder/girder).
 
 #### Getting Started
 
-**js-girder-client** can be retrieved using **npm** or **bower**. 
+**js-girder-client** can be retrieved using **npm**, **bower** or **source** at GitHub. 
 
 ##### npm
 
@@ -30,6 +30,15 @@ Inside a Web project that use a bower.json, you can use the following dependency
     "js-girder-client": "master"
   }
 }
+```
+##### Source
+
+```bash
+~ $ git clone git@github.com:Kitware/js-girder-client.git
+~ $ cd js-girder-client
+~/js-girder-client $ npm install 
+~/js-girder-client $ npm run test:basic
+# => Now browse to http://localhost:3000
 ```
 
 #### Documentation
