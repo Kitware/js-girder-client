@@ -48,7 +48,7 @@ getting started guide, advanced documentation, and API descriptions.
 
 #### Licensing
 
-**js-girder-client** is licensed under [Apache License 2.0](LICENSE).
+**js-girder-client** is licensed under [BSD Clause 3](LICENSE).
 
 #### Getting Involved
 
