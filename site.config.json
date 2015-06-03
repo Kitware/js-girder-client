@@ -10,8 +10,8 @@
     "ctx"   : {
         "title": "JS Girder Client",
         "vision": "Automagic Girder Communication",
-        "description": "HTTP library for Girder.",
-        "details": "",
+        "description": "JavaScript client for a Girder server.",
+        "details": "js-girder-client is a JavaScript library for interacting with a girder server instance. The library can be used inside NodeJS or within a browser. In addition, a command line interface is also provided that allows complex actions to be scripted.",
         "license": "BSD 3 Clause Open Source",
         "company": "Kitware, Inc.",
         "companyURL": "http://www.kitware.com",
