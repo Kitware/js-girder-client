@@ -165,7 +165,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadResources</span><span class="hljs-params">(resourceList, withMetadata, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadResources</span>(<span class="hljs-params">resourceList, withMetadata, callback</span>) </span>{
     <span class="hljs-keyword">var</span> args = _.args([<span class="hljs-string">'resourceList'</span>, <span class="hljs-string">'withMetadata'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>),
         query = { resources: <span class="hljs-built_in">JSON</span>.toString(args.resourceList), includeMetadata: (args.withMetadata === <span class="hljs-literal">undefined</span>) ? <span class="hljs-literal">false</span> : !!args.withMetadata };
     _.GET(<span class="hljs-string">'/resource/download'</span> + _.extractQuery(args.query), args.callback);
@@ -181,7 +181,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">searchResources</span><span class="hljs-params">(query, types, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">searchResources</span>(<span class="hljs-params">query, types, callback</span>) </span>{
     <span class="hljs-keyword">var</span> opt = { q: <span class="hljs-built_in">JSON</span>.toString(query), types: <span class="hljs-built_in">JSON</span>.toString(types) };
     _.GET(<span class="hljs-string">'/resource/search'</span> + _.extractQuery(opt), callback);
 }</pre></div>
@@ -196,7 +196,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteResources</span><span class="hljs-params">(resourceList, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteResources</span>(<span class="hljs-params">resourceList, callback</span>) </span>{
     <span class="hljs-keyword">var</span> query = { resources: <span class="hljs-built_in">JSON</span>.toString(resourceList) };
     _.DELETE(<span class="hljs-string">'/resource'</span> + _.extractQuery(query), callback);
 }</pre></div>

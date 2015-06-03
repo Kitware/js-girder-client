@@ -165,7 +165,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateGroupModerator</span><span class="hljs-params">(groupdId, userId, isModerator, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateGroupModerator</span>(<span class="hljs-params">groupdId, userId, isModerator, callback</span>) </span>{
     <span class="hljs-keyword">var</span> url = <span class="hljs-string">'/group/'</span> + groupdId + <span class="hljs-string">'/moderator?userId='</span> + userId;
     <span class="hljs-keyword">if</span>(isModerator) {
         _.POST(url, callback);
@@ -184,7 +184,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateGroupAdmin</span><span class="hljs-params">(groupdId, userId, isAdmin, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateGroupAdmin</span>(<span class="hljs-params">groupdId, userId, isAdmin, callback</span>) </span>{
     <span class="hljs-keyword">var</span> url = <span class="hljs-string">'/group/'</span> + groupdId + <span class="hljs-string">'/admin?userId='</span> + userId;
     <span class="hljs-keyword">if</span>(isAdmin) {
         _.POST(url, callback);
@@ -203,7 +203,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createGroup</span><span class="hljs-params">(name, options, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createGroup</span>(<span class="hljs-params">name, options, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'name'</span>, <span class="hljs-string">'description'</span>, <span class="hljs-string">'public'</span>],
         args = _.args([<span class="hljs-string">'name'</span>, <span class="hljs-string">'options'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 
@@ -223,7 +223,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteGroup</span><span class="hljs-params">(groupdId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteGroup</span>(<span class="hljs-params">groupdId, callback</span>) </span>{
     _.DELETE(<span class="hljs-string">'/group/'</span> + groupdId, callback);
 }</pre></div>
         
@@ -237,7 +237,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGroup</span><span class="hljs-params">(groupdId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGroup</span>(<span class="hljs-params">groupdId, callback</span>) </span>{
     _.GET(<span class="hljs-string">'/group/'</span> + groupdId, callback);
 }</pre></div>
         
@@ -251,7 +251,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editGroup</span><span class="hljs-params">(groupdId, options, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editGroup</span>(<span class="hljs-params">groupdId, options, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'name'</span>, <span class="hljs-string">'description'</span>, <span class="hljs-string">'public'</span>];
     _.PUT(<span class="hljs-string">'/group/'</span> + groupdId + _.extractQuery(options, allowedQueryKeys), callback);
 }</pre></div>
@@ -266,7 +266,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listGroupInvitations</span><span class="hljs-params">(groupId, query, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listGroupInvitations</span>(<span class="hljs-params">groupId, query, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'limit'</span>, <span class="hljs-string">'offset'</span>, <span class="hljs-string">'sort'</span>, <span class="hljs-string">'sortdir'</span>],
         args = _.args([<span class="hljs-string">'groupId'</span>, <span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
     _.GET(<span class="hljs-string">'/group/'</span> + groupId + <span class="hljs-string">'/invitation'</span> + _.extractQuery(args.query, allowedQueryKeys), args.callback);
@@ -282,7 +282,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addGroupInvitation</span><span class="hljs-params">(groupId, userId, options, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addGroupInvitation</span>(<span class="hljs-params">groupId, userId, options, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'userId'</span>, <span class="hljs-string">'level'</span>, <span class="hljs-string">'quiet'</span>],
         args = _.args([<span class="hljs-string">'groupId'</span>, <span class="hljs-string">'userId'</span>, <span class="hljs-string">'options'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
     
@@ -302,7 +302,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listGroupMembers</span><span class="hljs-params">(groupId, query, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listGroupMembers</span>(<span class="hljs-params">groupId, query, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'limit'</span>, <span class="hljs-string">'offset'</span>, <span class="hljs-string">'sort'</span>, <span class="hljs-string">'sortdir'</span>],
         args = _.args([<span class="hljs-string">'groupId'</span>, <span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
     _.GET(<span class="hljs-string">'/group/'</span> + groupId + <span class="hljs-string">'/member'</span> + _.extractQuery(args.query, allowedQueryKeys), args.callback);
@@ -318,7 +318,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeUserFromGroup</span><span class="hljs-params">(groupId, userId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeUserFromGroup</span>(<span class="hljs-params">groupId, userId, callback</span>) </span>{
     <span class="hljs-keyword">var</span> url = <span class="hljs-string">'/group/'</span> + groupId + <span class="hljs-string">'/member'</span>;
 
     <span class="hljs-keyword">if</span>(userId) {
@@ -338,7 +338,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joinGroup</span><span class="hljs-params">(groupId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">joinGroup</span>(<span class="hljs-params">groupId, callback</span>) </span>{
     _.POST(<span class="hljs-string">'/group/'</span> + groupId + <span class="hljs-string">'/member'</span>, callback);
 }</pre></div>
         
@@ -352,7 +352,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGroupAccess</span><span class="hljs-params">(groupId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGroupAccess</span>(<span class="hljs-params">groupId, callback</span>) </span>{
     _.GET(<span class="hljs-string">'/group/'</span> + groupId + <span class="hljs-string">'/access'</span>, callback);
 }</pre></div>
         

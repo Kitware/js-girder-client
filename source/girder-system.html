@@ -165,7 +165,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteSetting</span><span class="hljs-params">(key, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteSetting</span>(<span class="hljs-params">key, callback</span>) </span>{
     _.DELETE(<span class="hljs-string">'/system/setting'</span> + _.extractQuery({key:key}), callback);
 }</pre></div>
         
@@ -179,7 +179,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSettings</span><span class="hljs-params">(options, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getSettings</span>(<span class="hljs-params">options, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'key'</span>, <span class="hljs-string">'list'</span>, <span class="hljs-string">'default'</span>];
     _.GET(<span class="hljs-string">'/system/setting'</span> + _.extractQuery(options, allowedQueryKeys), callback);
 }</pre></div>
@@ -194,7 +194,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSettings</span><span class="hljs-params">(keyValueMap, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setSettings</span>(<span class="hljs-params">keyValueMap, callback</span>) </span>{
     <span class="hljs-keyword">var</span> list = [];
     <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> key <span class="hljs-keyword">in</span> keyValueMap) {
         list.push({ key: key, value: keyValueMap[key] });
@@ -212,7 +212,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getServerVersion</span><span class="hljs-params">(callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getServerVersion</span>(<span class="hljs-params">callback</span>) </span>{
     _.GET(<span class="hljs-string">'/system/version'</span>, callback);
 }</pre></div>
         
@@ -226,7 +226,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listUnfinishedUpload</span><span class="hljs-params">(query, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listUnfinishedUpload</span>(<span class="hljs-params">query, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'uploadId'</span>, <span class="hljs-string">'userId'</span>, <span class="hljs-string">'parentId'</span>, <span class="hljs-string">'assetstoreId'</span>, <span class="hljs-string">'minimumAge'</span>, <span class="hljs-string">'includeUntracked'</span>, <span class="hljs-string">'limit'</span>, <span class="hljs-string">'offset'</span>, <span class="hljs-string">'sort'</span>, <span class="hljs-string">'sortdir'</span>],
         args = _.args([<span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
     _.GET(<span class="hljs-string">'/system/uploads'</span> + _.extractQuery(args.query, allowedQueryKeys), args.callback);
@@ -242,7 +242,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeUnfinishedUpload</span><span class="hljs-params">(query, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">removeUnfinishedUpload</span>(<span class="hljs-params">query, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'uploadId'</span>, <span class="hljs-string">'userId'</span>, <span class="hljs-string">'parentId'</span>, <span class="hljs-string">'assetstoreId'</span>, <span class="hljs-string">'minimumAge'</span>, <span class="hljs-string">'includeUntracked'</span>];
     _.DELETE(<span class="hljs-string">'/system/uploads'</span> + _.extractQuery(query, allowedQueryKeys), callback);
 }</pre></div>
@@ -257,7 +257,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listPlugins</span><span class="hljs-params">(callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listPlugins</span>(<span class="hljs-params">callback</span>) </span>{
     _.GET(<span class="hljs-string">'/system/plugins'</span>, callback);
 }</pre></div>
         
@@ -271,7 +271,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setActivePlugins</span><span class="hljs-params">(pluginList, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setActivePlugins</span>(<span class="hljs-params">pluginList, callback</span>) </span>{
     _.PUT(<span class="hljs-string">'/system/plugins'</span> + _.extractQuery({plugins:pluginList}), callback);
 }</pre></div>
         

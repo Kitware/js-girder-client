@@ -165,7 +165,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listUsers</span><span class="hljs-params">(query, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listUsers</span>(<span class="hljs-params">query, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'text'</span>, <span class="hljs-string">'limit'</span>, <span class="hljs-string">'offset'</span>, <span class="hljs-string">'sort'</span>, <span class="hljs-string">'sortdir'</span>],
         args = _.args([<span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
     _.GET(<span class="hljs-string">'/user'</span> + _.extractQuery(args.query, allowedQueryKeys), args.callback);
@@ -181,7 +181,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createUser</span><span class="hljs-params">(user, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createUser</span>(<span class="hljs-params">user, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'login'</span>, <span class="hljs-string">'email'</span>, <span class="hljs-string">'firstName'</span>, <span class="hljs-string">'lastName'</span>, <span class="hljs-string">'password'</span>, <span class="hljs-string">'admin'</span>],
         count = allowedQueryKeys.length;</pre></div>
         
@@ -212,7 +212,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changePassword</span><span class="hljs-params">(oldPassword, newPassword, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">changePassword</span>(<span class="hljs-params">oldPassword, newPassword, callback</span>) </span>{
     _.PUT(<span class="hljs-string">'/user/password'</span> + 
           _.extractQuery({ old:oldPassword, <span class="hljs-keyword">new</span>:newPassword }), 
           callback);
@@ -228,7 +228,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resetPassword</span><span class="hljs-params">(email, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resetPassword</span>(<span class="hljs-params">email, callback</span>) </span>{
     _.DELETE(<span class="hljs-string">'/user/password'</span> + 
           _.extractQuery({email:email}), 
           callback);
@@ -244,7 +244,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteUser</span><span class="hljs-params">(userId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteUser</span>(<span class="hljs-params">userId, callback</span>) </span>{
     _.DELETE(<span class="hljs-string">'/user/'</span> + userId, callback);
 }</pre></div>
         
@@ -258,7 +258,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUser</span><span class="hljs-params">(userId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUser</span>(<span class="hljs-params">userId, callback</span>) </span>{
     _.GET(<span class="hljs-string">'/user/'</span> + userId, callback);
 }</pre></div>
         
@@ -272,7 +272,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateUser</span><span class="hljs-params">(user, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateUser</span>(<span class="hljs-params">user, callback</span>) </span>{
     <span class="hljs-keyword">var</span> mandatoryKeys = [<span class="hljs-string">'email'</span>, <span class="hljs-string">'firstName'</span>, <span class="hljs-string">'lastName'</span>, <span class="hljs-string">'id'</span>],
         count = mandatoryKeys.length;</pre></div>
         
@@ -302,7 +302,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">me</span><span class="hljs-params">(callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">me</span>(<span class="hljs-params">callback</span>) </span>{
     _.GET(<span class="hljs-string">'/user/me'</span>, callback);
 }</pre></div>
         

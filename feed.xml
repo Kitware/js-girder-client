@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JS Girder Client</title>
-    <description>HTTP library for Girder.</description>
+    <description>JavaScript client for a Girder server.</description>
     <link>/js-girder-client/</link>
     <atom:link href="/js-girder-client/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 20 May 2015 09:05:25 -0600</pubDate>
-    <lastBuildDate>Wed, 20 May 2015 09:05:25 -0600</lastBuildDate>
+    <pubDate>Wed, 03 Jun 2015 11:02:02 -0600</pubDate>
+    <lastBuildDate>Wed, 03 Jun 2015 11:02:02 -0600</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
       <item>

@@ -180,7 +180,7 @@ host, port, protocol, API endpoint and eventually provide an existing token.</p>
  }
 </code></pre>
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">configure</span><span class="hljs-params">(opts)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">configure</span>(<span class="hljs-params">opts</span>) </span>{
     _.update(opts);
 }</pre></div>
         
@@ -189,9 +189,9 @@ host, port, protocol, API endpoint and eventually provide an existing token.</p>
         <p>Method used to authenticate yourself as a given user.</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">login</span><span class="hljs-params">(user, password, callback)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">login</span>(<span class="hljs-params">user, password, callback</span>) </span>{
     _.update({ user: user, password: password });
-    _.GET(<span class="hljs-string">'/user/authentication'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, response)</span> </span>{
+    _.GET(<span class="hljs-string">'/user/authentication'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, response</span>) </span>{
         <span class="hljs-keyword">if</span>(err) {
             <span class="hljs-keyword">return</span> callback(err, response);
         }
@@ -206,8 +206,8 @@ host, port, protocol, API endpoint and eventually provide an existing token.</p>
         <p>Clear current authentication</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logout</span><span class="hljs-params">(callback)</span> </span>{
-    _.DELETE(<span class="hljs-string">'/user/authentication'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err, response)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logout</span>(<span class="hljs-params">callback</span>) </span>{
+    _.DELETE(<span class="hljs-string">'/user/authentication'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, response</span>) </span>{
         <span class="hljs-keyword">if</span>(err) {
             <span class="hljs-keyword">return</span> callback(err, response);
         }

@@ -152,16 +152,16 @@
         
         
         
-          <div class='highlight'><pre>describe(<span class="hljs-string">"Validate testing environment"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+          <div class='highlight'><pre>describe(<span class="hljs-string">"Validate testing environment"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
 
-    it(<span class="hljs-string">'test globals'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{ 
+    it(<span class="hljs-string">'test globals'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ 
         expect(girder).toBeDefined();
     });
 
-    it(<span class="hljs-string">'test girder proxy'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span></span>{
+    it(<span class="hljs-string">'test girder proxy'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
         girder({port:<span class="hljs-built_in">Number</span>(<span class="hljs-built_in">window</span>.location.port)});
         
-        girder.listUsers(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error, data)</span></span>{
+        girder.listUsers(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, data</span>)</span>{
             expect(error).toBeNull();
 
             <span class="hljs-keyword">var</span> users = data.content,

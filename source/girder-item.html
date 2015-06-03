@@ -165,7 +165,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadItem</span><span class="hljs-params">(itemId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadItem</span>(<span class="hljs-params">itemId, callback</span>) </span>{
     _.GET(<span class="hljs-string">'/item/'</span> + itemId + <span class="hljs-string">'/download'</span>, callback);
 }</pre></div>
         
@@ -179,7 +179,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateItemMetadata</span><span class="hljs-params">(itemId, metadata, callback)</span> </span>{</pre></div>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateItemMetadata</span>(<span class="hljs-params">itemId, metadata, callback</span>) </span>{</pre></div>
         
       
         
@@ -201,7 +201,7 @@ _.PUT(‘/item/‘ + itemId + ‘/metadata’, callback);</p>
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listItems</span><span class="hljs-params">(query, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listItems</span>(<span class="hljs-params">query, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'folderId'</span>, <span class="hljs-string">'text'</span>, <span class="hljs-string">'limit'</span>, <span class="hljs-string">'offset'</span>, <span class="hljs-string">'sort'</span>, <span class="hljs-string">'sortdir'</span>],
         args = _.args([<span class="hljs-string">'query'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 
@@ -218,7 +218,7 @@ _.PUT(‘/item/‘ + itemId + ‘/metadata’, callback);</p>
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createItem</span><span class="hljs-params">(folderId, name, description, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createItem</span>(<span class="hljs-params">folderId, name, description, callback</span>) </span>{
     <span class="hljs-keyword">var</span> query = { folderId: folderId, name: name },
         args = _.args([<span class="hljs-string">'folderId'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'description'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 
@@ -238,7 +238,7 @@ _.PUT(‘/item/‘ + itemId + ‘/metadata’, callback);</p>
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listFiles</span><span class="hljs-params">(itemId, options, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listFiles</span>(<span class="hljs-params">itemId, options, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'limit'</span>, <span class="hljs-string">'offset'</span>, <span class="hljs-string">'sort'</span>],
         args = _.args([<span class="hljs-string">'itemId'</span>, <span class="hljs-string">'options'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 
@@ -255,7 +255,7 @@ _.PUT(‘/item/‘ + itemId + ‘/metadata’, callback);</p>
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getItemRootPath</span><span class="hljs-params">(itemId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getItemRootPath</span>(<span class="hljs-params">itemId, callback</span>) </span>{
     _.GET(<span class="hljs-string">'/item/'</span> + itemId + <span class="hljs-string">'/rootpath'</span>, callback);
 }</pre></div>
         
@@ -269,7 +269,7 @@ _.PUT(‘/item/‘ + itemId + ‘/metadata’, callback);</p>
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getItem</span><span class="hljs-params">(itemId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getItem</span>(<span class="hljs-params">itemId, callback</span>) </span>{
     _.GET(<span class="hljs-string">'/item/'</span> + itemId, callback);
 }</pre></div>
         
@@ -283,7 +283,7 @@ _.PUT(‘/item/‘ + itemId + ‘/metadata’, callback);</p>
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteItem</span><span class="hljs-params">(itemId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteItem</span>(<span class="hljs-params">itemId, callback</span>) </span>{
     _.DELETE(<span class="hljs-string">'/item/'</span> + itemId, callback);
 }</pre></div>
         
@@ -297,7 +297,7 @@ _.PUT(‘/item/‘ + itemId + ‘/metadata’, callback);</p>
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editItem</span><span class="hljs-params">(itemId, options, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editItem</span>(<span class="hljs-params">itemId, options, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'folderId'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'description'</span>],
         args = _.args([<span class="hljs-string">'itemId'</span>, <span class="hljs-string">'options'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 
@@ -314,7 +314,7 @@ _.PUT(‘/item/‘ + itemId + ‘/metadata’, callback);</p>
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">copyItem</span><span class="hljs-params">(itemId, options, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">copyItem</span>(<span class="hljs-params">itemId, options, callback</span>) </span>{
      <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'folderId'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'description'</span>],
         args = _.args([<span class="hljs-string">'itemId'</span>, <span class="hljs-string">'options'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 

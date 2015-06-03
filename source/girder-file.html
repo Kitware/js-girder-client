@@ -165,7 +165,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uploadChunk</span><span class="hljs-params">(uploadId, offset, chunk, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uploadChunk</span>(<span class="hljs-params">uploadId, offset, chunk, callback</span>) </span>{
     <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> __BROWSER_BUILD__ != <span class="hljs-string">'undefined'</span> &amp;&amp; __BROWSER_BUILD__) {
         callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Not implemented for browser"</span>));
     } <span class="hljs-keyword">else</span> {
@@ -190,7 +190,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uploadComplete</span><span class="hljs-params">(uploadId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">uploadComplete</span>(<span class="hljs-params">uploadId, callback</span>) </span>{
     <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> __BROWSER_BUILD__ != <span class="hljs-string">'undefined'</span> &amp;&amp; __BROWSER_BUILD__) {
         callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Not implemented for browser"</span>));
     } <span class="hljs-keyword">else</span> {
@@ -212,7 +212,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUploadOffset</span><span class="hljs-params">(uploadId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getUploadOffset</span>(<span class="hljs-params">uploadId, callback</span>) </span>{
     _.GET(<span class="hljs-string">'/file/offset?uploadId='</span> + uploadId, callback);
 }</pre></div>
         
@@ -226,7 +226,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadFile</span><span class="hljs-params">(fileId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">downloadFile</span>(<span class="hljs-params">fileId, callback</span>) </span>{
     _.GET(<span class="hljs-string">'/file/'</span> + fileId + <span class="hljs-string">'/download'</span>, callback);
 }</pre></div>
         
@@ -240,7 +240,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateFileContent</span><span class="hljs-params">(fileId, size, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateFileContent</span>(<span class="hljs-params">fileId, size, callback</span>) </span>{
     _.PUT(<span class="hljs-string">'/file/'</span> + fileId + <span class="hljs-string">'/contents?size='</span> + size, callback);
 }</pre></div>
         
@@ -254,7 +254,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteFile</span><span class="hljs-params">(fileId, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deleteFile</span>(<span class="hljs-params">fileId, callback</span>) </span>{
     _.DELETE(<span class="hljs-string">'/file/'</span> + fileId, callback);
 }</pre></div>
         
@@ -268,7 +268,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editFile</span><span class="hljs-params">(fileId, metadata, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">editFile</span>(<span class="hljs-params">fileId, metadata, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'name'</span>, <span class="hljs-string">'mimeType'</span>],
         args = _.args([<span class="hljs-string">'resourceList'</span>, <span class="hljs-string">'withMetadata'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
     _.PUT(<span class="hljs-string">'/file/'</span> + fileId + _.extractQuery(args.metadata, allowedQueryKeys), args.callback);
@@ -284,7 +284,7 @@
         
         
           <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newFile</span><span class="hljs-params">(parentType, parentId, name, options, callback)</span> </span>{
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">newFile</span>(<span class="hljs-params">parentType, parentId, name, options, callback</span>) </span>{
     <span class="hljs-keyword">var</span> allowedQueryKeys = [<span class="hljs-string">'parentType'</span>, <span class="hljs-string">'parentId'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'size'</span>, <span class="hljs-string">'mimeType'</span>, <span class="hljs-string">'linkUrl'</span>],
         args = _.args([<span class="hljs-string">'parentType'</span>, <span class="hljs-string">'parentId'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'options'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 

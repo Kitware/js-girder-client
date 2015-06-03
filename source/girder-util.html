@@ -162,7 +162,7 @@ implementation.</p>
     userAuth = <span class="hljs-literal">null</span>,
     protocol = <span class="hljs-string">"http:"</span>;
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">NoOp</span><span class="hljs-params">()</span></span>{}</pre></div>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">NoOp</span>(<span class="hljs-params"></span>)</span>{}</pre></div>
         
       
         
@@ -170,7 +170,7 @@ implementation.</p>
 This assume the callback parameter being the last one.</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">argsProcessor</span><span class="hljs-params">(keys, args)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">argsProcessor</span>(<span class="hljs-params">keys, args</span>) </span>{
     <span class="hljs-keyword">var</span> argMap = {},
         argsArray = [];
 
@@ -202,7 +202,7 @@ This assume the callback parameter being the last one.</p>
         <p>Update module configuration</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span><span class="hljs-params">(config)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">update</span>(<span class="hljs-params">config</span>) </span>{
     basepath = config.basepath  || basepath;
     host     = config.host      || host;
     port     = config.port      || port;
@@ -217,7 +217,7 @@ This assume the callback parameter being the last one.</p>
         <p>Reset authentication</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resetAuth</span><span class="hljs-params">()</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">resetAuth</span>(<span class="hljs-params"></span>) </span>{
     token    = <span class="hljs-literal">null</span>;
     userAuth = <span class="hljs-literal">null</span>;
 }</pre></div>
@@ -227,7 +227,7 @@ This assume the callback parameter being the last one.</p>
         <p>Update user authentication information</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateUser</span><span class="hljs-params">(user, password)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateUser</span>(<span class="hljs-params">user, password</span>) </span>{
     <span class="hljs-keyword">if</span>(user &amp;&amp; password) {
         <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> __BROWSER_BUILD__ != <span class="hljs-string">'undefined'</span> &amp;&amp; __BROWSER_BUILD__) {
             userAuth = <span class="hljs-string">'Basic '</span> + btoa(user + <span class="hljs-string">':'</span> + password);
@@ -242,7 +242,7 @@ This assume the callback parameter being the last one.</p>
         <p>Generate URI parameter based on a Map and an array of string of include and exclude.</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extractQuery</span><span class="hljs-params">(queryMap, filterKeys, excludeKeys)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">extractQuery</span>(<span class="hljs-params">queryMap, filterKeys, excludeKeys</span>) </span>{
     <span class="hljs-keyword">var</span> queryBuffer = [];
 
     queryMap = queryMap || {};
@@ -269,7 +269,7 @@ This assume the callback parameter being the last one.</p>
         <p>Build the request description for Girder</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeRequest</span><span class="hljs-params">(method, url, formData)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">makeRequest</span>(<span class="hljs-params">method, url, formData</span>) </span>{
     <span class="hljs-keyword">var</span> requestObject = {  
         method      : method,      
         host        : host,
@@ -307,17 +307,17 @@ This assume the callback parameter being the last one.</p>
         <p>Helper for node implementation</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleResponse</span><span class="hljs-params">(callback)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleResponse</span>(<span class="hljs-params">callback</span>) </span>{
     <span class="hljs-keyword">if</span>(!callback) {
         <span class="hljs-keyword">return</span> NoOp;
     }
 
     <span class="hljs-keyword">var</span> buffer = [];
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(response)</span> </span>{
-        response.on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(chunk)</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+        response.on(<span class="hljs-string">'data'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>) </span>{
                 buffer.push(chunk);
         });
-        response.on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        response.on(<span class="hljs-string">'end'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
             callback( <span class="hljs-literal">null</span>, 
                      { status  : response.statusCode, 
                        headers : response.headers, 
@@ -331,12 +331,12 @@ This assume the callback parameter being the last one.</p>
         <p>Helper for browser implementation</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attachSuccessError</span><span class="hljs-params">(requestObj, callback)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attachSuccessError</span>(<span class="hljs-params">requestObj, callback</span>) </span>{
     <span class="hljs-keyword">if</span>(callback) {
-        requestObj.success = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(response,a,b,c,d)</span> </span>{
+        requestObj.success = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response,a,b,c,d</span>) </span>{
             callback(<span class="hljs-literal">null</span>, { content: response, status: <span class="hljs-number">200</span>, headers: {}});
         };
-        requestObj.error = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(response)</span> </span>{
+        requestObj.error = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
             callback(response);
         };
     }
@@ -348,11 +348,11 @@ This assume the callback parameter being the last one.</p>
         <p>Helper for node implementation</p>
 
         
-          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleRequest</span><span class="hljs-params">(request, formData, callback)</span> </span>{
+          <div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleRequest</span>(<span class="hljs-params">request, formData, callback</span>) </span>{
     <span class="hljs-keyword">var</span> args = argsProcessor([<span class="hljs-string">'request'</span>, <span class="hljs-string">'formData'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 
     <span class="hljs-keyword">if</span>(args.callback) {
-        request.on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span> </span>{
+        request.on(<span class="hljs-string">'error'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
             args.callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(err), <span class="hljs-literal">null</span>);
         });
     }
@@ -387,19 +387,19 @@ This assume the callback parameter being the last one.</p>
         
           <div class='highlight'><pre><span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> __BROWSER_BUILD__ != <span class="hljs-string">'undefined'</span> &amp;&amp; __BROWSER_BUILD__) {
     <span class="hljs-keyword">var</span> httpClient = <span class="hljs-built_in">require</span>(<span class="hljs-string">'reqwest'</span>);
-    <span class="hljs-built_in">module</span>.exports.GET = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, callback)</span> </span>{
+    <span class="hljs-built_in">module</span>.exports.GET = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, callback</span>) </span>{
         httpClient(attachSuccessError(makeRequest(<span class="hljs-string">'get'</span>, url), callback));
     };
 
-    <span class="hljs-built_in">module</span>.exports.DELETE = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, callback)</span> </span>{
+    <span class="hljs-built_in">module</span>.exports.DELETE = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, callback</span>) </span>{
         httpClient(attachSuccessError(makeRequest(<span class="hljs-string">'delete'</span>, url), callback));
     };
 
-    <span class="hljs-built_in">module</span>.exports.PUT = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, callback)</span> </span>{
+    <span class="hljs-built_in">module</span>.exports.PUT = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, callback</span>) </span>{
         httpClient(attachSuccessError(makeRequest(<span class="hljs-string">'put'</span>, url), callback));
     };
 
-    <span class="hljs-built_in">module</span>.exports.POST = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, callback)</span> </span>{
+    <span class="hljs-built_in">module</span>.exports.POST = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, callback</span>) </span>{
         httpClient(attachSuccessError(makeRequest(<span class="hljs-string">'post'</span>, url), callback));
     };
 } <span class="hljs-keyword">else</span> {</pre></div>
@@ -410,19 +410,19 @@ This assume the callback parameter being the last one.</p>
 
         
           <div class='highlight'><pre>    <span class="hljs-keyword">var</span> http = <span class="hljs-built_in">require</span>(<span class="hljs-string">'http'</span>);
-    <span class="hljs-built_in">module</span>.exports.GET = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, callback)</span> </span>{
+    <span class="hljs-built_in">module</span>.exports.GET = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, callback</span>) </span>{
         handleRequest( http.request(makeRequest(<span class="hljs-string">'GET'</span>, url), handleResponse(callback)), callback);
     };
 
-    <span class="hljs-built_in">module</span>.exports.DELETE = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, callback)</span> </span>{
+    <span class="hljs-built_in">module</span>.exports.DELETE = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, callback</span>) </span>{
         handleRequest( http.request(makeRequest(<span class="hljs-string">'DELETE'</span>, url), handleResponse(callback)), callback);
     };
 
-    <span class="hljs-built_in">module</span>.exports.PUT = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, callback)</span> </span>{
+    <span class="hljs-built_in">module</span>.exports.PUT = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, callback</span>) </span>{
         handleRequest( http.request(makeRequest(<span class="hljs-string">'PUT'</span>, url), handleResponse(callback)), callback);
     };
 
-    <span class="hljs-built_in">module</span>.exports.POST = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(url, formData, callback)</span> </span>{
+    <span class="hljs-built_in">module</span>.exports.POST = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">url, formData, callback</span>) </span>{
         <span class="hljs-keyword">var</span> args = argsProcessor([<span class="hljs-string">'url'</span>, <span class="hljs-string">'formData'</span>, <span class="hljs-string">'callback'</span>], <span class="hljs-built_in">arguments</span>);
 
     handleRequest( http.request(makeRequest(<span class="hljs-string">'POST'</span>, url, args.formData), handleResponse(args.callback)), args.formData, args.callback);
