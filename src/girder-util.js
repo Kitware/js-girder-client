@@ -190,6 +190,10 @@ if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
         httpClient(attachSuccessError(makeRequest('delete', url), callback));
     };
 
+    module.exports.PATCH = function (url, callback) {
+        httpClient(attachSuccessError(makeRequest('put', url), callback));
+    };
+
     module.exports.PUT = function (url, callback) {
         httpClient(attachSuccessError(makeRequest('put', url), callback));
     };
@@ -206,6 +210,10 @@ if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
 
     module.exports.DELETE = function (url, callback) {
         handleRequest( http.request(makeRequest('DELETE', url), handleResponse(callback)), callback);
+    };
+
+    module.exports.PATCH = function (url, callback) {
+        handleRequest( http.request(makeRequest('PUT', url), handleResponse(callback)), callback);
     };
 
     module.exports.PUT = function (url, callback) {

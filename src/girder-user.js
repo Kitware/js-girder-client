@@ -80,6 +80,32 @@ function me(callback) {
     _.GET('/user/me', callback);
 }
 
+// AWS
+
+function getAWSProfiles(callback) {
+    _GET('user/' + user._id + '/aws/profiles', callback);
+}
+
+function createAWSProfile(prof, callback) {
+    _.POST('user/' + user._id + '/aws/profiles', prof, callback);
+}
+
+function saveAWSProfile(prof, callback) {
+    _.PATCH('user/' + user._id + '/aws/profiles/' + prof._id, prof, callback);
+}
+
+function getAWSRunningInstances(prof, callback) {
+    _GET('user/' + user._id + '/aws/profiles/' + prof._id + '/runninginstances', callback);
+}
+
+function getAWSMaxInstances(prof, callback) {
+    _GET('user/' + user._id + '/aws/profiles/' + prof._id + '/maxinstances', callback);
+}
+
+function deleteAWSProfile(prof, callback) {
+    _.DELETE('user/' + user._id + '/aws/profiles/' + prof._id, callback);
+}
+
 // --- Export functions for the module ---
 
 module.exports = {
@@ -90,5 +116,12 @@ module.exports = {
     deleteUser      : deleteUser,
     getUser         : getUser,
     updateUser      : updateUser,
-    me              : me
+    me              : me,
+
+    getAWSProfiles:         getAWSProfiles,
+    createAWSProfile:       createAWSProfile,
+    saveAWSProfile:         saveAWSProfile,
+    getAWSRunningInstances: getAWSRunningInstances,
+    getAWSMaxInstances:     getAWSMaxInstances,
+    deleteAWSProfile:       deleteAWSProfile
 };
