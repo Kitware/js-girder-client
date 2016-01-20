@@ -3,6 +3,7 @@ var _ = require("./girder-util.js"),
     girderResources = [
         require('./girder-assetstore.js'),
         require('./girder-collection.js'),
+        require('./girder-cluster.js'),
         require('./girder-file.js'),
         require('./girder-folder.js'),
         require('./girder-group.js'),
