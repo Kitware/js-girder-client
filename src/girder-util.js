@@ -49,10 +49,14 @@ function resetAuth() {
     userAuth = null;
 }
 
+function isBrowser() {
+    return typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__
+}
+
 // Update user authentication information
 function updateUser(user, password) {
     if(user && password) {
-        if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
+        if(isBrowser()) {
             userAuth = 'Basic ' + btoa(user + ':' + password);
         } else {
             userAuth = 'Basic ' + new Buffer(user + ':' + password).toString('base64');
@@ -95,7 +99,7 @@ function makeRequest(method, url, formData) {
         }
     };
 
-    if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
+    if(isBrowser()) {
         requestObject.url = basepath + url;
     } else {
         requestObject.path = basepath + url;
@@ -107,11 +111,14 @@ function makeRequest(method, url, formData) {
         requestObject.headers.Authorization = userAuth; 
     }
 
-    if(formData) {
+    if(formData && !isBrowser()) {
         var fHeaders = formData.getHeaders();
         for(var key in fHeaders) {
             requestObject.headers[key] = fHeaders[key];
         }
+    } else {
+        requestObject.data = JSON.stringify(formData);
+        requestObject.headers['Content-Type'] = 'application/json';
     }
 
     return requestObject;
@@ -180,7 +187,7 @@ module.exports = {
 };
 
 // Browser specific code
-if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
+if(isBrowser()) {
     var httpClient = require('reqwest');
     module.exports.GET = function (url, callback) {
         httpClient(attachSuccessError(makeRequest('get', url), callback));
@@ -191,15 +198,16 @@ if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
     };
 
     module.exports.PATCH = function (url, callback) {
-        httpClient(attachSuccessError(makeRequest('put', url), callback));
+        httpClient(attachSuccessError(makeRequest('patch', url), callback));
     };
 
     module.exports.PUT = function (url, callback) {
         httpClient(attachSuccessError(makeRequest('put', url), callback));
     };
 
-    module.exports.POST = function (url, callback) {
-        httpClient(attachSuccessError(makeRequest('post', url), callback));
+    module.exports.POST = function (url, data, callback) {
+        httpClient(
+                attachSuccessError(makeRequest('post', url, data), callback));
     };
 } else {
     // Node specific code
@@ -213,7 +221,7 @@ if(typeof __BROWSER_BUILD__ != 'undefined' && __BROWSER_BUILD__) {
     };
 
     module.exports.PATCH = function (url, callback) {
-        handleRequest( http.request(makeRequest('PUT', url), handleResponse(callback)), callback);
+        handleRequest( http.request(makeRequest('PATCH', url), handleResponse(callback)), callback);
     };
 
     module.exports.PUT = function (url, callback) {

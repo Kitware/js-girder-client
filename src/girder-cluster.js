@@ -1,15 +1,15 @@
 var _ = require("./girder-util.js");
 
 function getClusterProfiles(cb) {
-    _.GET('clusters?type=trad', cb);
+    _.GET('/clusters?type=trad', cb);
 }
 
 function getSingleClusterProfile(id, cb) {
-    _.GET('clusters/' + id, cb);
+    _.GET('/clusters/' + id, cb);
 }
 
 function getClusterStatus(id, cb) {
-    _.GET('clusters/' + id + '/status', cb);
+    _.GET('/clusters/' + id + '/status', cb);
 }
 
 function getClusterLog(taskId, offset, cb) {
@@ -17,19 +17,19 @@ function getClusterLog(taskId, offset, cb) {
         offset = 0;
     }
 
-    _.GET('clusters/' + taskId + '/log', cb);
+    _.GET('/clusters/' + taskId + '/log', cb);
 }
 
 function testCluster(id, cb) {
-    _.PUT('clusters/' + id + '/start', cb);
+    _.PUT('/clusters/' + id + '/start', cb);
 }
 
 function createClusterProfile(prof, cb) {
-    _.POST('clusters', prof, cb);
+    _.POST('/clusters', prof, cb);
 }
 
 function deleteClusterProfile(prof, cb) {
-    _.DELETE('clusters/' + prof._id, cb);
+    _.DELETE('/clusters/' + prof._id, cb);
 }
 
 module.exports = {
@@ -40,4 +40,4 @@ module.exports = {
     testCluster: testCluster,
     createClusterProfile: createClusterProfile,
     deleteClusterProfile: deleteClusterProfile
-}
+};
